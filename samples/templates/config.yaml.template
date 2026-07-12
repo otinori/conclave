@@ -1,0 +1,72 @@
+schema_version: "1.0"
+
+user:
+  id: "<your-user-id>"
+  display_name: "<your-display-name>"
+
+# ペルソナ同期。`user_scope` は個人・マシンローカル限定のプール（プレーンな
+# ディレクトリ、git 非管理）。`banks` は git 管理された名前付きプールで、
+# マシン・人を越えて共有できる — conclave-push-persona / conclave-pull-persona
+# (--bank) と conclave-summon (--bank) を参照。いずれも conclave-bank-sync が支える。
+sync:
+  user_scope: ~/.conclave
+  conflict_strategy: stop  # stop | skip | ask
+  banks:
+    persona-bank:
+      remote: https://github.com/otinori/conclave_persona-bank
+      path: ~/.conclave/banks/persona-bank
+
+limits:
+  max_personas: 30
+  max_personas_per_guild: 7
+  max_simultaneous_summons: 7
+
+notification:
+  mode: off
+  max_per_day: 3
+
+confidentiality:
+  default: INTERNAL
+  require_explicit_declaration: true
+
+withdrawal:
+  max_workload_percent: 30
+  core_project_progress_check: weekly
+
+distillation:
+  trigger_after_n_summons: 3
+  require_human_interpretation: true
+
+# レトロスペクティブ自動学習 (conclave-retro)。
+# ペルソナはスケジュールまたは大きなタスクの後、直近の勤怠を growth.yaml へ
+# 自己蒸留する。矛盾しない小さな学びはペルソナ自身の解釈を添えて自動反映され、
+# 大きな変更は人間承認待ちに回される。
+retro:
+  auto: true
+  # 前回レトロ以降、このセッション数に達したら対象ペルソナのレトロを発火する。
+  # 既定では蒸留の周期を流用する。
+  trigger_after_n_summons: 3
+  # 時間ベースの周期。実体はホスト側のスケジューラ（/schedule やフック等）が
+  # conclave-retro を呼び出すことで実現する。skill 自体はタイマーではなく挙動を定義する。
+  schedule:
+    weekly: true
+    monthly: true
+  # dismiss 時にレトロを発火すべき「大きなタスク」の判定条件。
+  big_task:
+    explicit_flag: true        # meta.yaml の big_task: true を尊重する
+    min_topics: 4              # この件数以上の解決済みトピック/保留があれば該当
+    confidential_is_big: true  # CONFIDENTIAL セッションは既定で大きなタスク扱い
+  # 大きさによるゲート: 自動学習させるか人間を待つか。
+  magnitude:
+    # ペルソナ自身の解釈を添えて自動反映する。
+    auto_apply:
+      - new_fact_with_first_interpretation
+      - non_reversing_elaboration
+    # distill-accept 経由の人間承認待ちとして pending.yaml に退避する。
+    require_human_approval:
+      - belief_supersession        # 既存の持論を反転・狭小化・拡張する
+      - license_escalation         # confidentiality の既定より広いライセンスへの格上げ
+      - confidential_derived       # CONFIDENTIAL セッション由来、かつ非 PRIVATE ライセンス
+      - cross_persona_belief       # 他ペルソナの判断を取り込む
+      - contradicts_existing_entry
+    on_uncertain: require_human_approval

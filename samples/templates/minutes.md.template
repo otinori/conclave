@@ -1,0 +1,27 @@
+# セッション <session-id> 議事録
+
+**日付**: <YYYY-MM-DD>
+**召喚者**: <user-id>
+**confidentiality**: INTERNAL
+**ファシリテータ**: <persona-id or none>
+**ペルソナ**: <persona-id-list>
+
+## 議題
+
+<topic>
+
+## 主な発言
+
+### <persona-id>
+
+<summary>
+
+## 合意・対立・保留
+
+- **合意**: <agreement>
+- **対立**: <conflict>
+- **保留**: <hold>
+
+## メタ観察
+
+<facilitator observations>

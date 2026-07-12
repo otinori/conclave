@@ -1,0 +1,31 @@
+{
+  "name": "conclave-marketplace",
+  "owner": {
+    "name": "otinori"
+  },
+  "metadata": {
+    "description": "Conclave マーケットプレイス — 専門化された AI ペルソナを召喚し、セッションを記録し、レトロスペクティブでペルソナの記憶を自動学習する。",
+    "version": "0.6.0.1-PoC"
+  },
+  "plugins": [
+    {
+      "name": "conclave",
+      "source": "./",
+      "description": "専門化された AI ペルソナを召喚し、セッションを記録し、ペルソナの記憶をローカルで蒸留・自動学習する Skills ベースの MVP。レトロスペクティブ自動学習エンジンと opt-in の retro リマインドフック付き。",
+      "version": "0.6.0.1-PoC",
+      "author": {
+        "name": "otinori"
+      },
+      "license": "MIT",
+      "keywords": [
+        "conclave",
+        "persona",
+        "skills",
+        "decision-support",
+        "retrospective",
+        "auto-learning",
+        "mvp"
+      ]
+    }
+  ]
+}

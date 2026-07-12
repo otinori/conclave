@@ -1,0 +1,16 @@
+{
+  "description": "Conclave の retro リマインド。セッション開始時に、レトロ期限が来ているペルソナがいれば非ブロッキングでリマインドする。python3 が PATH に無い環境や .conclave/ 未初期化のプロジェクトでは何もしない。",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v python3 >/dev/null 2>&1 && python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/conclave_retro_check.py || exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

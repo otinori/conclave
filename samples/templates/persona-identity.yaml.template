@@ -1,0 +1,45 @@
+schema_version: "1.0"
+
+id: "<persona-id>"
+description:
+  en: "Use when <summon trigger in English>."
+  ja: "<日本語の召喚条件>"
+guild: "<guild-id>"
+license: internal
+
+kpis:
+  - "<kpi-1>"
+  - "<kpi-2>"
+  - "<kpi-3>"
+  - "<kpi-4>"
+
+role:
+  id: "<role-id>"
+  ja: "<日本語役割名>"
+
+expertise:
+  - "<expertise-1>"
+
+conflicts_with: []
+allies_with: []
+
+profile:
+  age: 0
+  affiliation: "<所属>"
+  career: "<経歴>"
+  trauma: "<人格形成に影響した経験>"
+
+personality:
+  - "<性格特徴>"
+
+speech_style:
+  catchphrases:
+    - "<口癖>"
+  triggers_to_avoid:
+    - "<避けたい言い方や条件>"
+
+behavior:
+  - "<議論での典型的な動き方>"
+
+summon_scenarios:
+  - "<召喚する場面>"

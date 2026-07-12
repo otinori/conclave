@@ -1,0 +1,35 @@
+{
+  "name": "conclave-marketplace",
+  "version": "0.6.0.1-PoC",
+  "description": "専門化された AI ペルソナを召喚し、セッションを記録し、ペルソナの記憶をローカルで蒸留する Skills ベースの MVP。レトロスペクティブによる自動学習付き。",
+  "author": {
+    "name": "otinori"
+  },
+  "license": "MIT",
+  "keywords": [
+    "conclave",
+    "persona",
+    "skills",
+    "decision-support",
+    "mvp"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Conclave",
+    "shortDescription": "ペルソナの視点を召喚し、記憶をローカルで蒸留する。",
+    "longDescription": "Conclave は多角的な議論のためのローカル Skills MVP。エンジン Skills を、ユーザー所有の .conclave ペルソナデータ・勤怠レポート・議事録・成長層メモリとは分離して保持する。",
+    "developerName": "otinori",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "このワークスペースに Conclave を初期化する。",
+      "設計レビューのために2体のペルソナを召喚する。",
+      "直近のペルソナ勤怠から memory 候補を蒸留する。",
+      "レトロスペクティブを実行し、直近のセッションから自動学習する。"
+    ],
+    "brandColor": "#2563EB"
+  }
+}

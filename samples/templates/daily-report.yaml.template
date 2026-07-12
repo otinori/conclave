@@ -1,0 +1,23 @@
+schema_version: "1.0"
+persona: "<persona-id>"
+date: "<YYYY-MM-DD>"
+session_id: "<session-id>"
+summoned_by: "<user-id>"
+confidentiality: INTERNAL
+
+planned:
+  - id: T-001
+    desc: "<予定タスク>"
+
+actual:
+  - id: T-001
+    status: completed
+    note: "<実際の貢献内容>"
+
+unexpected: []
+
+kpt_delta:
+  added: []
+  transitioned: []
+
+memory_seeds: []

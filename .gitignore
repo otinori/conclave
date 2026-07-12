@@ -1,0 +1,36 @@
+# Python (hooks/)
+__pycache__/
+*.py[cod]
+
+# Conclave user data (must never be committed by the plugin repo)
+.conclave/
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa
+id_ed25519
+
+# Logs / temp
+*.log
+*.tmp
+*~
+.cache/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Pre-public audit evidence (内部記録として保持。公開リポジトリには含めない)
+PRE_PUBLIC_AUDIT_EVIDENCE.md

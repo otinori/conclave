@@ -1,0 +1,59 @@
+schema_version: "1.0"
+
+user:
+  id: sample-user
+  display_name: "サンプルユーザー"
+
+limits:
+  max_personas: 30
+  max_personas_per_guild: 7
+  max_simultaneous_summons: 7
+
+notification:
+  mode: off
+  max_per_day: 3
+
+confidentiality:
+  default: INTERNAL
+  require_explicit_declaration: true
+
+withdrawal:
+  max_workload_percent: 30
+  core_project_progress_check: weekly
+
+distillation:
+  trigger_after_n_summons: 3
+  require_human_interpretation: true
+
+retro:
+  auto: true
+  trigger_after_n_summons: 3
+  schedule:
+    weekly: true
+    monthly: true
+  big_task:
+    explicit_flag: true
+    min_topics: 4
+    confidential_is_big: true
+  magnitude:
+    auto_apply:
+      - new_fact_with_first_interpretation
+      - non_reversing_elaboration
+    require_human_approval:
+      - belief_supersession
+      - license_escalation
+      - confidential_derived
+      - cross_persona_belief
+      - contradicts_existing_entry
+    on_uncertain: require_human_approval
+
+# ペルソナ同期設定（push/pull-persona）
+sync:
+  user_scope: ~/.conclave          # ユーザースコープのルートパス
+  push_on_dismiss: false           # dismiss 時に自動 push するか（true は明示的な場合のみ）
+  conflict_strategy: stop          # stop | skip | ask
+
+# ペルソナ統廃合設定（merge-persona）
+merge_persona:
+  require_same_owner: true         # 同一所有者チェックを強制する（柱2保護）
+  archive_dir: .conclave/personas/archive
